@@ -29,6 +29,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install buildozer cython==0.29.37
 
+      - name: Prepare python-for-android
+        run: |
+          mkdir -p "$HOME/.buildozer/android/platform"
+          git clone --depth 1 --branch master https://github.com/kivy/python-for-android.git "$HOME/.buildozer/android/platform/python-for-android"
       - name: Build APK
         run: yes | buildozer android debug
 
